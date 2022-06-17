@@ -4071,6 +4071,7 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  height: 100%;
 }
 .navbar-nav {
   display: flex;
@@ -4454,10 +4455,10 @@ textarea.form-control-lg {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.55);
@@ -11323,7 +11324,7 @@ body {
 #layoutSidenav {
   display: flex;
 }
-#layoutSidenav #layoutSidenav_nav {
+#layoutSidenav #layoutSidenav_nav, nav #navbar-brand{
   flex-basis: 225px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
@@ -11341,9 +11342,20 @@ body {
   margin-left: -225px;
 }
 
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+nav #navbar-brand{
+    margin-left: -225px;
+}
+
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav, nav #navbar-brand{
   transform: translateX(0);
 }
+
+.sb-sidenav-toggled nav #navbar-brand {
+    margin-left: 0;
+    transition: margin 0.15s ease-in-out;
+}
+
+
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
   display: block;
@@ -11359,24 +11371,25 @@ body {
 }
 
 @media (min-width: 992px) {
-  #layoutSidenav #layoutSidenav_nav {
+  #layoutSidenav #layoutSidenav_nav, nav #navbar-brand {
     transform: translateX(0);
   }
-  #layoutSidenav #layoutSidenav_content {
+  #layoutSidenav #layoutSidenav_content, nav #navbar-brand {
     margin-left: 0;
     transition: margin 0.15s ease-in-out;
   }
 
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav, .sb-sidenav-toggled nav #navbar-brand {
     transform: translateX(-225px);
   }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content, .sb-sidenav-toggled nav #navbar-brand {
     margin-left: -225px;
   }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before{
     display: none;
   }
 }
+
 .sb-nav-fixed .sb-topnav {
   z-index: 1039;
 }

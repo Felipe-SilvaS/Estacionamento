@@ -11,14 +11,14 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-light py-0 shadow-sm">
+    <nav class="sb-topnav navbar navbar-expand navbar-light py-0 shadow-sm">
         <!-- Navbar Brand-->
-        <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" style="height: 100%">
+        <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" id="navbar-brand">
             <i class="fa-solid fa-square-parking fa-xl"></i>
             <span class="ps-3">{{ config('app.name') }}</span>
         </div>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 ms-2" id="sidebarToggle" href="#!" style="color:darkblue">
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 ms-2" id="sidebarToggle" href="#!">
             <i class="fas fa-bars fa-xl"></i>
         </button>
     </nav>
@@ -37,14 +37,13 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Preço</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Entrada</a>
+                                <a class="nav-link" href="#">Preço</a>
+                                <a class="nav-link" href="#">Entrada</a>
                             </nav>
                         </div>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-
+                <div class="sb-sidenav-footer px-2">
                 </div>
             </nav>
         </div>
@@ -58,13 +57,7 @@
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                    </div>
-                </div>
-            </footer>
+            
         </div>
     </div>
 
