@@ -13,7 +13,7 @@ class VagaController extends Controller
      */
     public function index()
     {
-
+        return view('vagas.index');
     }
 
     /**
@@ -79,6 +79,22 @@ class VagaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não foi encontrada');
+        }
+        if($vaga->status_pagamento){
+            $vaga->delete();
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message','Vaga Liberada, Obrigado!');
+        }
+        else{
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message','Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
+        }
     }
 }
