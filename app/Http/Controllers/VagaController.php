@@ -13,7 +13,7 @@ class VagaController extends Controller
      */
     public function index()
     {
-
+        return view('vagas.index');
     }
 
     /**
