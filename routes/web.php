@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrecoController;
+use App\Http\Controllers\VagaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::resource('precos', PrecoController::class);
+Route::resource('vagas', VagaController::class);
+
