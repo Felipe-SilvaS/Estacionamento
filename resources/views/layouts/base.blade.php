@@ -38,6 +38,7 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">Preço</a>
+
                                 <a class="nav-link" href="#">Entrada</a>
                             </nav>
                         </div>

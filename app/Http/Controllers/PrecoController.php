@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class VagaController extends Controller
+class PrecoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class VagaController extends Controller
      */
     public function index()
     {
-
+        return view('precos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class VagaController extends Controller
      */
     public function create()
     {
-        return view('vagas.create');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class VagaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //
     }
 
     /**

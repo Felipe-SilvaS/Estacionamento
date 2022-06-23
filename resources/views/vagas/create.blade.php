@@ -5,10 +5,11 @@
 @endsection
 
 @section('content')
-    <form action="">
+    <form action="{{route('vagas.store')}}" method="POST">
+        @csrf
         <div>
             <label for="">Nome</label>
-            <input type="text">
+            <input type="text" name="nome">
         </div>
 
         <div>
@@ -31,7 +32,6 @@
             <input type="text">
         </div>
 
-        <button></button>
-
+        <button type="submit">Adicionar</button>
     </form>
 @endsection
