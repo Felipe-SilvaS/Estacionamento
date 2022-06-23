@@ -50,14 +50,14 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="my-4">@yield('content-header')</h1>
+                    <div class="my-4">@yield('content-header')</div>
 
                     <div>
                         @yield('content')
                     </div>
                 </div>
             </main>
-            
+
         </div>
     </div>
 
