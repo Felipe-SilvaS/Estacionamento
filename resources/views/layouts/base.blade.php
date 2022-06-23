@@ -38,6 +38,7 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">Preço</a>
+                                    
                                 <a class="nav-link" href="#">Entrada</a>
                             </nav>
                         </div>
@@ -51,13 +52,8 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="my-4">@yield('content-header')</h1>
-
-                    <div>
-                        @yield('content')
-                    </div>
                 </div>
             </main>
-            
         </div>
     </div>
 
