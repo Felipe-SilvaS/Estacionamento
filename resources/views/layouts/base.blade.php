@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', 'Estacionamento')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 </head>
@@ -14,8 +14,8 @@
     <nav class="sb-topnav navbar navbar-expand navbar-light py-0 shadow-sm">
         <!-- Navbar Brand-->
         <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" id="navbar-brand">
-            <i class="fa-solid fa-square-parking fa-xl"></i>
-            <span class="ps-3">{{ config('app.name') }}</span>
+            <i class="fa-solid fa-car"></i>
+            <span class="ps-3">Estacionamento</span>
         </div>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 ms-2" id="sidebarToggle" href="#!">
@@ -37,7 +37,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">Preço</a>
+                                <a class="nav-link" href={{route('precos.index')}}>Preço</a>
 
                                 <a class="nav-link" href="#">Entrada</a>
                             </nav>
