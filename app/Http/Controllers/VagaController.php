@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vaga;
 
 class VagaController extends Controller
 {
@@ -34,7 +35,11 @@ class VagaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $data = $request->all();
+        Vaga::create($data);
+        return redirect()
+            ->view('vagas.index')
+            ->with('message', 'Carro adicionado ao sistema');
     }
 
     /**
@@ -80,21 +85,20 @@ class VagaController extends Controller
     public function destroy($id)
     {
         $vaga = Vaga::find($id);
-        if(!$vaga){
+        if (!$vaga) {
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message', 'Vaga não foi encontrada');
+                ->route('vagas.index')
+                ->with('message', 'Vaga não foi encontrada');
         }
-        if($vaga->status_pagamento){
+        if ($vaga->status_pagamento) {
             $vaga->delete();
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message','Vaga Liberada, Obrigado!');
-        }
-        else{
+                ->route('vagas.index')
+                ->with('message', 'Vaga Liberada, Obrigado!');
+        } else {
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message','Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
+                ->route('vagas.index')
+                ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
         }
     }
 }

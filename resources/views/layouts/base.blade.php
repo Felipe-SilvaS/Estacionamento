@@ -39,7 +39,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href={{route('precos.index')}}>Preço</a>
 
-                                <a class="nav-link" href="#">Entrada</a>
+                                <a class="nav-link" href="{{route('vagas.create')}}">Entrada</a>
                             </nav>
                         </div>
                     </div>
