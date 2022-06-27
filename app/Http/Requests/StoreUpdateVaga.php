@@ -39,7 +39,7 @@ class StoreUpdateVaga extends FormRequest
     {
 
         return [
-            'placa.regex' => 'Placa inválida'
+            'placa.regex' => 'O campo placa é inválido'
         ];
     }
 }
