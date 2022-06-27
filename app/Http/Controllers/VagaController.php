@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateVaga;
 use Illuminate\Http\Request;
 use App\Models\Vaga;
 
@@ -33,13 +34,13 @@ class VagaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateVaga $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         Vaga::create($data);
         return redirect()
-            ->view('vagas.index')
-            ->with('message', 'Carro adicionado ao sistema');
+            ->route('vagas.index')
+            ->with('message', 'Veículo adicionado ao sistema');
     }
 
     /**
