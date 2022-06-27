@@ -1,6 +1,6 @@
 
 
-@foreach ($vagas as $vaga)
+@foreach (@$vagas as $vaga)
 <p>nome_visitante:{{$vaga->nome_visitante}}</p>
 <p>cpf:{{$vaga->cpf}}</p>
 <p>placa:{{$vaga->placa}}</p>

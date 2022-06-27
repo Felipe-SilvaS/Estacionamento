@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vaga extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome_visitante', 'cpf', 'placa', 'acesso', 'status_pagamento'];
 }
