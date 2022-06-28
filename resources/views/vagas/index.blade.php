@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@include('layouts.partials.message')
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -23,7 +23,7 @@
                         <form action ="{{ route('vagas.destroy', $vaga->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value= "DELETE">
-                            <button type="submit" class="btn btn-dark btn-lg mr-1">Pagar</button>
+                            <button type="submit" class="btn btn-dark btn-lg mr-1">Sair</button>
                         </form>
                     </div>
                     <hr>

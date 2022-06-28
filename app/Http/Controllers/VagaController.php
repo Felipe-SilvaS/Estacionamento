@@ -79,7 +79,7 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateVaga $request, $id)
+    public function update(Request $request, $id)
     {
         $vagas = Vaga::find($id);
         if(!$vagas){
@@ -101,14 +101,14 @@ class VagaController extends Controller
      */
     public function destroy($id)
     {
-        $vagas = Vaga::find($id);
-        if (!$vagas) {
-            return redirect()
-                ->route('vagas.index')
-                ->with('message', 'Vaga não foi encontrada');
-        }
-        if ($vagas->status_pagamento) {
-            $vagas->delete();
+        $vaga = Vaga::find($id);
+        // if (!$vaga) {
+        //     return redirect()
+        //         ->route('vagas.index')
+        //         ->with('message', 'Vaga não foi encontrada');
+        // }
+        if ($vaga->status_pagamento) {
+            $vaga->delete();
             return redirect()
                 ->route('vagas.index')
                 ->with('message', 'Vaga Liberada, Obrigado!');

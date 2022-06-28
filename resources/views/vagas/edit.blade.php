@@ -43,6 +43,7 @@
             <p>{{$vagas->acesso}}</p>
         </div>
 
+
         <div>
             <label for="">Pagamento</label>
             <input type="radio" name="status_pagamento" value="1" id="pago">
