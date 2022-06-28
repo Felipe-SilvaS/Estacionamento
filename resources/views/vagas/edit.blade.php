@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <form action="{{ route('vagas.store', $vaga->id) }}" method="POST">
+    <form action="{{ route('vagas.update', $vaga->id) }}" method="POST">
         @method('put')
         @csrf
         <div>
@@ -42,6 +42,7 @@
             <label for="">Acesso: </label>
             <p>{{$vaga->acesso}}</p>
         </div>
+
 
         <div>
             <label for="">Pagamento</label>
