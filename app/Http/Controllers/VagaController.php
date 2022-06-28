@@ -15,8 +15,8 @@ class VagaController extends Controller
      */
     public function index()
     {
-        $vagas = Vaga::orderBy('created_at')->paginate(5);
-        return view ('vagas.index', compact('vagas'));
+        $vaga = Vaga::orderBy('created_at')->paginate(5);
+        return view ('vagas.index', compact('vaga'));
     }
 
     /**
@@ -63,13 +63,13 @@ class VagaController extends Controller
      */
     public function edit($id)
     {
-        $vagas = Vaga::find($id);
-        if(!$vagas){
+        $vaga = Vaga::find($id);
+        if(!$vaga){
             return redirect()
                         ->route('vagas.index')
                         ->with('message', 'Vaga não Encontrada, Tente Novamente');
         }
-        return view('vagas.edit', compact('vagas'));
+        return view('vagas.edit', compact('vaga'));
     }
 
     /**
@@ -81,13 +81,13 @@ class VagaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vagas = Vaga::find($id);
-        if(!$vagas){
+        $vaga = Vaga::find($id);
+        if(!$vaga){
             return redirect()
                         ->route('vagas.index')
                         ->with('message', 'Vaga não Encontrada, Tente Novamente');
         }
-        $vagas->update($request->all());
+        $vaga->update($request->all());
         return redirect()
                         ->route('vagas.index')
                         ->with('message', 'Pagamento Efetuado, Volte Sempre!');
@@ -102,11 +102,11 @@ class VagaController extends Controller
     public function destroy($id)
     {
         $vaga = Vaga::find($id);
-        // if (!$vaga) {
-        //     return redirect()
-        //         ->route('vagas.index')
-        //         ->with('message', 'Vaga não foi encontrada');
-        // }
+        if (!$vaga) {
+            return redirect()
+                ->route('vagas.index')
+                ->with('message', 'Vaga não foi encontrada');
+        }
         if ($vaga->status_pagamento) {
             $vaga->delete();
             return redirect()

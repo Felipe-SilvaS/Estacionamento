@@ -14,7 +14,7 @@
                 @endforeach
                 @endif
                 <div>
-                    @foreach ($vagas as $vaga)
+                    @foreach ($vaga as $vaga)
                     <p>Nome: {{$vaga->nome_visitante}}</p>
                     <p>Acesso: {{date( 'd/m/Y' , strtotime($vaga->acesso))}}</p>
                     <p>Status do pagamento: {{$vaga->status_pagamento}}</p>
