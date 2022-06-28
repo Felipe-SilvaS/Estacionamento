@@ -15,7 +15,8 @@ class VagaController extends Controller
      */
     public function index()
     {
-        return view('vagas.index');
+        $vagas= Vaga::orderBy('created_at')->paginate(5);
+        return view ('vagas.index', compact('vagas'));
     }
 
     /**
@@ -62,7 +63,13 @@ class VagaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vagas = Vaga::find($id);
+        if(!$vagas){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        return view('vagas.edit', compact('vaga'));
     }
 
     /**
@@ -85,20 +92,20 @@ class VagaController extends Controller
      */
     public function destroy($id)
     {
-        $vaga = Vaga::find($id);
-        if (!$vaga) {
+        $vagas = Vaga::find($id);
+        if (!$vagas) {
             return redirect()
                 ->route('vagas.index')
                 ->with('message', 'Vaga não foi encontrada');
         }
-        if ($vaga->status_pagamento) {
-            $vaga->delete();
+        if ($vagas->status_pagamento) {
+            $vagas->delete();
             return redirect()
                 ->route('vagas.index')
                 ->with('message', 'Vaga Liberada, Obrigado!');
         } else {
             return redirect()
-                ->route('vagas.index')
+                ->route('vagas.edit')
                 ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
         }
     }

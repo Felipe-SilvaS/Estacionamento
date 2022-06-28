@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="my-4">@yield('content-header')</h1>
+            <h1 class="my-4">Tabela de preços @yield('content-header')</h1>
             <div>
                 @yield('content')
                 @if($errors->any())
@@ -14,24 +14,15 @@
                 @endforeach
                 @endif
                 <div>
-                    <table border="2">
+                    <table width="80%" cellspacing="5" cellpadding="2" border="2">
                         <tr>
-                            <th>Frutas</th>
-                            <th>Verduras</th>
-                            <th>Grãos</th>
-                            <th>...</th>
+                            <th>Permanência</th> <th>Carro</th> <th>Moto</th> <th>Motorhome</th>
+                        </tr>
+                        <tr>
+                            <td>R$100,00</td> <td>R$100,00</td> <td>R$100,00</td> <td rowspan="4"></td>
+                        </tr>
+                        <tr>
 
-                        </tr>
-                        <tr>
-                            <td>Maçã</td>
-                            <td>Alface</td>
-                            <td>Arroz</td>
-                            <td rowspan="4"></td>
-                        </tr>
-                        <tr>
-                            <td>Laranja</td>
-                            <td>Beterraba</td>
-                            <td>Trigo</td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
@@ -43,8 +34,4 @@
     </main>
 </div>
 
-@stop
-
-@section('css')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 @stop
