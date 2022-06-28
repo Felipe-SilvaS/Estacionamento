@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateVaga;
 use Illuminate\Http\Request;
+use App\Models\Vaga;
 
 class VagaController extends Controller
 {
@@ -13,8 +15,8 @@ class VagaController extends Controller
      */
     public function index()
     {
-        $vagas = Vaga::orderBy('created_at')->paginate(5);
-        return view('vaga.index', compact('vagas'));
+        $vaga = Vaga::orderBy('created_at')->paginate(5);
+        return view('vagas.index', compact('vaga'));
 
     }
 
@@ -34,9 +36,13 @@ class VagaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateVaga $request)
     {
-        return $request;
+        $data = $request->validated();
+        Vaga::create($data);
+        return redirect()
+            ->route('vagas.index')
+            ->with('message', 'Veículo adicionado ao sistema');
     }
 
     /**
@@ -45,9 +51,14 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $vaga= Vaga::find($id);
+        if($vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não foi encontrada');
+        }
+        return view('vagas.show', compact('vaga'));
     }
 
     /**
@@ -58,7 +69,13 @@ class VagaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        return view('vagas.edit', compact('vaga'));
     }
 
     /**
@@ -68,9 +85,20 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateVaga $request, $id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        $vaga->update($request->all());
+
+        return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Pagamento Efetuado, Volte Sempre!');
+
     }
 
     /**
@@ -82,21 +110,20 @@ class VagaController extends Controller
     public function destroy($id)
     {
         $vaga = Vaga::find($id);
-        if(!$vaga){
+        if (!$vaga) {
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message', 'Vaga não foi encontrada');
+                ->route('vagas.index')
+                ->with('message', 'Vaga não foi encontrada');
         }
-        if($vaga->status_pagamento){
+        if ($vaga->status_pagamento) {
             $vaga->delete();
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message','Vaga Liberada, Obrigado!');
-        }
-        else{
+                ->route('vagas.index')
+                ->with('message', 'Vaga Liberada, Obrigado!');
+        } else {
             return redirect()
-                        ->route('vagas.index')
-                        ->with('message','Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
+                ->route('vagas.edit')
+                ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
         }
     }
 }

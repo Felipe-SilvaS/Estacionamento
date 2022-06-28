@@ -14,7 +14,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-light py-0 shadow-sm">
         <!-- Navbar Brand-->
         <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" id="navbar-brand">
-            <i class="fa-solid fa-car"></i>
+            <i style="cursor: pointer" onclick="window.location.href='/'" class="fa-solid fa-car"></i>
             <span class="ps-3">Estacionamento</span>
         </div>
         <!-- Sidebar Toggle-->
@@ -39,7 +39,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href={{route('precos.index')}}>Preço</a>
 
-                                <a class="nav-link" href="#">Entrada</a>
+                                <a class="nav-link" href="{{route('vagas.create')}}">Entrada</a>
                             </nav>
                         </div>
                     </div>
