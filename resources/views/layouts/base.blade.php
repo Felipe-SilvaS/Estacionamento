@@ -11,7 +11,7 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-light py-0 shadow-sm">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white py-0 shadow-sm">
         <!-- Navbar Brand-->
         <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" id="navbar-brand">
             <i class="fa-solid fa-car"></i>
@@ -50,8 +50,8 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
-                    <div class="my-4">@yield('content-header')</div>
+                <div class="container-fluid px-4 pt-4">
+                    <div class="mb-4">@yield('content-header')</div>
 
                     <div>
                         @yield('content')
