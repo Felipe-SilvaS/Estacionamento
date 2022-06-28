@@ -9,3 +9,5 @@ class Vaga extends Model
 {
     use HasFactory;
 }
+
+    

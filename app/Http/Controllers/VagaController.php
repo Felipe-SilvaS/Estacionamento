@@ -13,7 +13,9 @@ class VagaController extends Controller
      */
     public function index()
     {
-        return view('vagas.index');
+        $vagas = Vaga::orderBy('created_at')->paginate(5);
+        return view('vaga.index', compact('vagas'));
+
     }
 
     /**
