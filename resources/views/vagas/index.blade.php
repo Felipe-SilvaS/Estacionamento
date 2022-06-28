@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@include('layouts.partials.message')
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -14,7 +14,7 @@
                 @endforeach
                 @endif
                 <div>
-                    @foreach ($vagas as $vaga)
+                    @foreach ($vaga as $vaga)
                     <p>Nome: {{$vaga->nome_visitante}}</p>
                     <p>Acesso: {{date( 'd/m/Y' , strtotime($vaga->acesso))}}</p>
                     <p>Status do pagamento: {{$vaga->status_pagamento}}</p>
@@ -23,10 +23,9 @@
                         <form action ="{{ route('vagas.destroy', $vaga->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value= "DELETE">
-                            <button type="submit" class="btn btn-dark btn-lg mr-1">Pagar</button>
+                            <button type="submit" class="btn btn-dark btn-lg mr-1">Sair</button>
                         </form>
                     </div>
-
                     <hr>
                     @endforeach
                 </div>

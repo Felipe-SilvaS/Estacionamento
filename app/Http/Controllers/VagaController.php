@@ -85,7 +85,7 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateVaga $request, $id)
+    public function update(Request $request, $id)
     {
         $vaga = Vaga::find($id);
         if(!$vaga){
@@ -94,11 +94,9 @@ class VagaController extends Controller
                         ->with('message', 'Vaga não Encontrada, Tente Novamente');
         }
         $vaga->update($request->all());
-
         return redirect()
                         ->route('vagas.index')
                         ->with('message', 'Pagamento Efetuado, Volte Sempre!');
-
     }
 
     /**
@@ -122,7 +120,7 @@ class VagaController extends Controller
                 ->with('message', 'Vaga Liberada, Obrigado!');
         } else {
             return redirect()
-                ->route('vagas.edit')
+                ->route('vagas.edit', $id)
                 ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
         }
     }
