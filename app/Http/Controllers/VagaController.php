@@ -15,8 +15,9 @@ class VagaController extends Controller
      */
     public function index()
     {
-        $vagas = Vaga::all();
-        return view('vagas.index', compact('vagas'));
+        $vaga = Vaga::orderBy('created_at')->paginate(5);
+        return view('vagas.index', compact('vaga'));
+
     }
 
     /**
@@ -50,9 +51,14 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $vaga= Vaga::find($id);
+        if($vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não foi encontrada');
+        }
+        return view('vagas.show', compact('vaga'));
     }
 
     /**
@@ -63,7 +69,13 @@ class VagaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        return view('vagas.edit', compact('vaga'));
     }
 
     /**
@@ -75,7 +87,16 @@ class VagaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        $vaga->update($request->all());
+        return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Pagamento Efetuado, Volte Sempre!');
     }
 
     /**
@@ -99,7 +120,7 @@ class VagaController extends Controller
                 ->with('message', 'Vaga Liberada, Obrigado!');
         } else {
             return redirect()
-                ->route('vagas.index')
+                ->route('vagas.edit', $id)
                 ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
         }
     }

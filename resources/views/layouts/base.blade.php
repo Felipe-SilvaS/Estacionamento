@@ -14,7 +14,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-white py-0 shadow-sm">
         <!-- Navbar Brand-->
         <div class="navbar-brand ps-3 d-flex align-items-center bg-dark" id="navbar-brand">
-            <i class="fa-solid fa-car"></i>
+            <i style="cursor: pointer" onclick="window.location.href='/'" class="fa-solid fa-car"></i>
             <span class="ps-3">Estacionamento</span>
         </div>
         <!-- Sidebar Toggle-->

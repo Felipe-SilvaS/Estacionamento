@@ -11,3 +11,5 @@ class Vaga extends Model
 
     protected $fillable = ['nome_visitante', 'cpf', 'placa', 'acesso', 'status_pagamento'];
 }
+
+    
