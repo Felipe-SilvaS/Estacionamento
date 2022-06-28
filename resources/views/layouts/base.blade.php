@@ -51,7 +51,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4 pt-4">
-                    <div class="mb-4">@yield('content-header')</div>
+                    <div class="mb-3">@yield('content-header')</div>
 
                     <div>
                         @yield('content')
