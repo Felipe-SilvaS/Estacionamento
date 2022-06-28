@@ -63,8 +63,8 @@ class VagaController extends Controller
      */
     public function edit($id)
     {
-        $vaga = Vaga::find($id);
-        if(!$vaga){
+        $vagas = Vaga::find($id);
+        if(!$vagas){
             return redirect()
                         ->route('vagas.index')
                         ->with('message', 'Vaga não Encontrada, Tente Novamente');
