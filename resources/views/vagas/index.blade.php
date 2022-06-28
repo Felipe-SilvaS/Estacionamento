@@ -26,7 +26,6 @@
                             <button type="submit" class="btn btn-dark btn-lg mr-1">Pagar</button>
                         </form>
                     </div>
-
                     <hr>
                     @endforeach
                 </div>

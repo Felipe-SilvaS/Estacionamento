@@ -17,12 +17,12 @@
         </div>
     @endif
 
-    <form action="{{ route('vagas.store', $vaga->id) }}" method="POST">
+    <form action="{{ route('vagas.update', $vagas->id) }}" method="POST">
         @method('put')
         @csrf
         <div>
             <label for="">Nome: </label>
-            <p>{{$vaga->nome_visitante}}</p>
+            <p>{{$vagas->nome_visitante}}</p>
             <div>
                 <strong></strong>
             </div>
@@ -30,17 +30,17 @@
 
         <div>
             <label for="">CPF: </label>
-            <p>{{$vaga->cpf}}</p>
+            <p>{{$vagas->cpf}}</p>
         </div>
 
         <div>
             <label for="">Placa: </label>
-            <p>{{$vaga->placa}}</p>
+            <p>{{$vagas->placa}}</p>
         </div>
 
         <div>
             <label for="">Acesso: </label>
-            <p>{{$vaga->acesso}}</p>
+            <p>{{$vagas->acesso}}</p>
         </div>
 
         <div>

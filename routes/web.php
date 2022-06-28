@@ -14,11 +14,7 @@ use App\Http\Controllers\VagaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('layouts.base');
-});
+Route::get('/', [VagaController::class, 'index']);
 
 Route::resource('precos', PrecoController::class);
 Route::resource('vagas', VagaController::class);
-
