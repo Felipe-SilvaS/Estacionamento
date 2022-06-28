@@ -79,9 +79,20 @@ class VagaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateVaga $request, $id)
     {
-        //
+        $vaga = Vaga::find($id);
+        if(!$vaga){
+            return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Vaga não Encontrada, Tente Novamente');
+        }
+        $vaga->update($request->all());
+
+        return redirect()
+                        ->route('vagas.index')
+                        ->with('message', 'Pagamento Efetuado, Volte Sempre!');
+
     }
 
     /**
