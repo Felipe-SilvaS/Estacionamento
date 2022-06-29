@@ -7,16 +7,6 @@
 @section('content')
     @include('layouts.partials.message')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="card">
         <div class="card-header">
             <span>Quantidade de Vagas: </span>
@@ -46,7 +36,17 @@
                         </div>
                     </div>
 
-                    <div class="col-6 me-1">
+                    <div class="col-6">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input type="text" id="celular"
+                            class="form-control {{ $errors->has('celular') ? 'is-invalid' : '' }}" name="celular"
+                            value="{{ old('celular') }}" aria-describedby="celularValidationFeedback">
+                        <div id="celulareValidationFeedback" class="invalid-feedback">
+                            <span> {{ $errors->first('celular') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
                         <label for="telefone" class="form-label">Telefone</label>
                         <input type="text" id="telefone"
                             class="form-control {{ $errors->has('telefone') ? 'is-invalid' : '' }}" name="telefone"
@@ -59,38 +59,40 @@
                     <div class="col-md-6">
                         <label for="placa" class="form-label">Placa </label>
                         <input type="text" id="placa"
-                            class="form-control {{ $errors->has('placa') ? 'is-invalid' : '' }}" name="placa"
-                            value="{{ old('placa') }}" aria-describedby="placaValidationFeedback">
+                            class="form-control text-uppercase {{ $errors->has('placa') ? 'is-invalid' : '' }}"
+                            name="placa" value="{{ old('placa') }}" aria-describedby="placaValidationFeedback">
                         <div id="placaValidationFeedback" class="invalid-feedback">
                             <span>{{ $errors->first('placa') }}</span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="acesso" class="form-label">Entrada</label>
-                        <input type="datetime-local" id="acesso" class="form-control" value="{{ old('acesso') }}"
-                            name="acesso">
-                        <div>
-
                         </div>
                     </div>
 
                     <div class="col-12">
                         <span class="d-block form-label">Pagamento</span>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="pago" class="form-check-input" name="status_pagamento"
-                                value="1" {{ old('status_pagamento') === '1' ? 'checked' : ' ' }}>
-                            <label for="pago">Pago</label>
+                            <input type="radio" id="pago"
+                                class="form-check-input {{ $errors->has('status_pagamento') ? 'is-invalid' : '' }}"
+                                name="status_pagamento" value="1"
+                                {{ old('status_pagamento') === '1' ? 'checked' : ' ' }}
+                                aria-describedby="pagamentoValidationFeedback">
+                            <label for="pago" class="form-check-label">Pago</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" id="pendente" class="form-check-input" name="status_pagamento"
-                                value="0" {{ old('status_pagamento') === '0' ? 'checked' : ' ' }}>
+                            <input type="radio" id="pendente"
+                                class="form-check-input {{ $errors->has('status_pagamento') ? 'is-invalid' : '' }}"
+                                name="status_pagamento" value="0"
+                                {{ old('status_pagamento') === '0' ? 'checked' : ' ' }}
+                                aria-describedby="pagamentoValidationFeedback">
                             <label for="pendente" class="form-check-label">Pendente</label>
                         </div>
+                        <div id="pagamentoValidationFeedback" class="invalid-feedback {{ $errors->has('status_pagamento') ? 'd-block' : '' }}">Selecione o status do pagamento</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Adicionar</button>
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/vagas/register.js') }}"></script>
 @endsection

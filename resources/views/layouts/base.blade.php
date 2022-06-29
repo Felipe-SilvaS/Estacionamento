@@ -8,6 +8,7 @@
     <title>@yield('title', 'Estacionamento')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    @yield('style')
 </head>
 
 <body class="sb-nav-fixed">
@@ -18,9 +19,11 @@
             <span class="ps-3">Estacionamento</span>
         </div>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 ms-2" id="sidebarToggle" href="#!">
-            <i class="fas fa-bars fa-xl"></i>
-        </button>
+        <div class="ps-3" id="toggle">
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#!">
+                <i class="fas fa-bars fa-xl"></i>
+            </button>
+        </div>
     </nav>
 
     <div id="layoutSidenav">
@@ -64,7 +67,8 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
-
+    <script src="{{ asset('jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('jquery-mask/jquery.mask.min.js') }}"></script>
     @yield('scripts')
 </body>
 

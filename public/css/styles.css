@@ -11342,19 +11342,17 @@ body {
   margin-left: -225px;
 }
 
-nav #navbar-brand{
+#toggle{
     margin-left: -225px;
 }
 
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav, nav #navbar-brand{
+.sb-sidenav-toggled #toggle{
+    margin-left: 0px;
+}
+
+.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav, .sb-sidenav-toggled #navbar-brand{
   transform: translateX(0);
 }
-
-.sb-sidenav-toggled nav #navbar-brand {
-    margin-left: 0;
-    transition: margin 0.15s ease-in-out;
-}
-
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
@@ -11374,15 +11372,14 @@ nav #navbar-brand{
   #layoutSidenav #layoutSidenav_nav, nav #navbar-brand {
     transform: translateX(0);
   }
-  #layoutSidenav #layoutSidenav_content, nav #navbar-brand {
+  #layoutSidenav #layoutSidenav_content, #toggle {
     margin-left: 0;
     transition: margin 0.15s ease-in-out;
   }
-
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav, .sb-sidenav-toggled nav #navbar-brand {
     transform: translateX(-225px);
   }
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content, .sb-sidenav-toggled nav #navbar-brand {
+  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content, .sb-sidenav-toggled #toggle {
     margin-left: -225px;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before{

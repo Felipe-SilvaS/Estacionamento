@@ -29,8 +29,9 @@ class StoreUpdateVaga extends FormRequest
         return [
             'nome_visitante' => ['required', 'string', 'min:4', 'max:50'],
             'cpf' => ['required', new Cpf],
-            'placa' => ['regex:/^[A-Z]{3}[0-9][0-9A-Z][0-9]{2}$/', 'unique:vagas,placa'],
-            'acesso' => ['required', 'date', 'before:' . Carbon::now(), 'after:' . Carbon::now()->subDays(1)],
+            'celular' => ['required', 'size:16'],
+            'telefone' => ['nullable', 'size :14'],
+            'placa' => ['regex:/^[A-Z]{3} [0-9][0-9A-Z][0-9]{2}$/', 'unique:vagas,placa'],
             'status_pagamento' => ['required', 'boolean']
         ];
     }
