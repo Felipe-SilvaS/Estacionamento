@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('vagas', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_veiculo');
             $table->integer('quantidade');
             $table->timestamps();
         });

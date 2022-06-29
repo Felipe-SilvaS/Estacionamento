@@ -44,6 +44,11 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                             Entrada
                         </a>
+
+                        <a href="{{ route('vagas.create') }}" class="nav-link">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></i></div>
+                            Adicionar
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer px-2">

@@ -11,17 +11,7 @@ class Vaga extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome_visitante', 'cpf','celular', 'placa', 'status_pagamento'];
-
-    public function acesso(): Attribute
-    {
-        return Attribute::set(fn ($value) => Carbon::now());
-    }
-
-    // public function setAcessoAttribute($value)
-    // {
-    //     return $this->attributes['acesso'] = Carbon::now();
-    // }
+    protected $fillable = ['tipo_veiculo_id', 'quantidade'];
 
     public function tipoVeiculo()
     {

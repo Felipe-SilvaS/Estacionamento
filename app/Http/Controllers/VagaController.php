@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateVaga;
+use App\Models\TipoVeiculo;
 use Illuminate\Http\Request;
 use App\Models\Vaga;
 
@@ -27,7 +28,8 @@ class VagaController extends Controller
      */
     public function create()
     {
-        return view('vagas.create');
+        $tipoVeiculos = TipoVeiculo::all();
+        return view('vagas.create', compact('tipoVeiculos'));
     }
 
     /**
@@ -36,9 +38,15 @@ class VagaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateVaga $request)
+    public function store(Request $request)
     {
-        
+        $dataVagas = $request->except('_token');
+
+        foreach ($dataVagas as $vaga) {
+            Vaga::create($vaga);
+        }
+
+        return redirect()->route('estadia.index');
     }
 
     /**

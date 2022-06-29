@@ -40,16 +40,14 @@ class EstadiaController extends Controller
     {
         $data = $request->all();
         $dataVeiculo = $data['veiculo'];
-        $dataEstadia = $data['estadia'];
         $preco = Preco::find('1');
         $veiculo = Veiculo::create($dataVeiculo);
-        $estadia = Estadia::create([
+        Estadia::create([
             'data_acesso' => Carbon::now(),
-            'status_pagamento' => $dataEstadia['status_pagamento'],
+            'status_pagamento' => $data['status_pagamento'],
             'veiculo_id' => $veiculo->id,
             'preco_id' => $preco->id
         ]);
-        return $veiculo->id;
         return redirect()
             ->route('vagas.index')
             ->with('message', 'Veículo adicionado ao sistema');
