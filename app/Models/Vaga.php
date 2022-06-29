@@ -11,7 +11,7 @@ class Vaga extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tipo_veiculo_id', 'quantidade'];
+    protected $fillable = ['tipo_veiculo_id', 'total'];
 
     public function tipoVeiculo()
     {

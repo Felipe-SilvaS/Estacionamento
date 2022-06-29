@@ -21,7 +21,7 @@
                                 {{ $tipoVeiculo->nome }}</label>
                             <input type="text" id="{{ $tipoVeiculo->nome }}"
                                 class="form-control {{ $errors->has('nome_proprietario') ? 'is-invalid' : '' }}"
-                                name="{{ $tipoVeiculo->nome }}[quantidade]" value="{{ old($tipoVeiculo->nome) }}"
+                                name="{{ $tipoVeiculo->nome }}[total]" value="{{ old($tipoVeiculo->nome) }}"
                                 aria-describedby="{{ $tipoVeiculo->nome }}nomeValidationFeedback">
                             <div id="{{ $tipoVeiculo->nome }}nomeValidationFeedback" class="invalid-feedback">
                                 <span>{{ $errors->first($tipoVeiculo->nome) }}</span>
