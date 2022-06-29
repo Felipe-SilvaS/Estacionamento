@@ -1,55 +1,98 @@
 @extends('layouts.base')
 
 @section('content-header')
-    <h2>Registro de Veículo</h2>
+    <h2 class="fs-2">Registro de Veículo</h2>
 @endsection
 
 @section('content')
     @include('layouts.partials.message')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <div class="card">
+        <div class="card-header">
+            <span>Quantidade de Vagas: </span>
         </div>
-    @endif
+        <div class="card-body">
+            <form action="{{ route('vagas.store') }}" method="POST">
+                @csrf
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="nome" class="form-label">Nome do Proprietário</label>
+                        <input type="text" id="nome"
+                            class="form-control {{ $errors->has('nome_visitante') ? 'is-invalid' : '' }}"
+                            name="nome_visitante" value="{{ old('nome_visitante') }}"
+                            aria-describedby="nomeValidationFeedback">
+                        <div id="nomeValidationFeedback" class="invalid-feedback">
+                            <span>{{ $errors->first('nome_visitante') }}</span>
+                        </div>
+                    </div>
 
-    <form action="{{ route('vagas.store') }}" method="POST">
-        @csrf
-        <div>
-            <label for="">Nome</label>
-            <input type="text" name="nome_visitante" value="{{ old('nome_visitante') }}">
-            <div>
-                <strong></strong>
-            </div>
+                    <div class="col-6">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" id="cpf"
+                            class="form-control {{ $errors->has('cpf') ? 'is-invalid' : '' }}" name="cpf"
+                            value="{{ old('cpf') }}" aria-describedby="cpfValiditonFeedback">
+                        <div id="cpfValidationFeedback" class="invalid-feedback">
+                            <span>{{ $errors->first('cpf') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input type="text" id="celular"
+                            class="form-control {{ $errors->has('celular') ? 'is-invalid' : '' }}" name="celular"
+                            value="{{ old('celular') }}" aria-describedby="celularValidationFeedback">
+                        <div id="celulareValidationFeedback" class="invalid-feedback">
+                            <span> {{ $errors->first('celular') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="text" id="telefone"
+                            class="form-control {{ $errors->has('telefone') ? 'is-invalid' : '' }}" name="telefone"
+                            value="{{ old('telefone') }}" aria-describedby="telefoneValidationFeedback">
+                        <div id="telefoneValidationFeedback" class="invalid-feedback">
+                            <span> {{ $errors->first('telefone') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="placa" class="form-label">Placa </label>
+                        <input type="text" id="placa"
+                            class="form-control text-uppercase {{ $errors->has('placa') ? 'is-invalid' : '' }}"
+                            name="placa" value="{{ old('placa') }}" aria-describedby="placaValidationFeedback">
+                        <div id="placaValidationFeedback" class="invalid-feedback">
+                            <span>{{ $errors->first('placa') }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <span class="d-block form-label">Pagamento</span>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="pago"
+                                class="form-check-input {{ $errors->has('status_pagamento') ? 'is-invalid' : '' }}"
+                                name="status_pagamento" value="1"
+                                {{ old('status_pagamento') === '1' ? 'checked' : ' ' }}
+                                aria-describedby="pagamentoValidationFeedback">
+                            <label for="pago" class="form-check-label">Pago</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="pendente"
+                                class="form-check-input {{ $errors->has('status_pagamento') ? 'is-invalid' : '' }}"
+                                name="status_pagamento" value="0"
+                                {{ old('status_pagamento') === '0' ? 'checked' : ' ' }}
+                                aria-describedby="pagamentoValidationFeedback">
+                            <label for="pendente" class="form-check-label">Pendente</label>
+                        </div>
+                        <div id="pagamentoValidationFeedback" class="invalid-feedback {{ $errors->has('status_pagamento') ? 'd-block' : '' }}">Selecione o status do pagamento</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </form>
         </div>
+    </div>
+@endsection
 
-        <div>
-            <label for="">CPF</label>
-            <input type="text" name="cpf" value="{{ old('cpf') }}">
-        </div>
-
-        <div>
-            <label for="">placa</label>
-            <input type="text" name="placa" value="{{ old('placa') }}">
-        </div>
-
-        <div>
-            <label for="">acesso</label>
-            <input type="datetime-local" name="acesso" value="{{ old('acesso') }}">
-        </div>
-
-        <div>
-            <label for="">Pagamento</label>
-            <input type="radio" name="status_pagamento" value="1" id="pago">
-            <label for="pago">Pago</label>
-            <input type="radio" name="status_pagamento" value="0" id="pendente">
-            <label for="pendente">Pendente</label>
-        </div>
-
-        <button type="submit">Adicionar</button>
-    </form>
+@section('scripts')
+    <script src="{{ asset('js/vagas/register.js') }}"></script>
 @endsection
