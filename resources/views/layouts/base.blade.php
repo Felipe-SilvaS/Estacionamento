@@ -31,18 +31,26 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link collapsed mt-4" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-sidenav-menu-heading">
                             Vagas
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </div>
+
+                        <a href="{{ route('precos.index') }}" class="nav-link">
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill-1-wave"></i></div>
+                            Preço
                         </a>
+
+                        <a href="{{ route('vagas.create') }}" class="nav-link">
+                            <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
+                            Entrada
+                        </a>
+
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href={{route('precos.index')}}>Preço</a>
+                                <a class="nav-link" href={{ route('precos.index') }}>Preço</a>
 
-                                <a class="nav-link" href="{{route('vagas.create')}}">Entrada</a>
+                                <a class="nav-link" href="{{ route('vagas.create') }}">Entrada</a>
                             </nav>
                         </div>
                     </div>
