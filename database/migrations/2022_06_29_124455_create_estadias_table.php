@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('vagas', function (Blueprint $table) {
-            $table->string('celular');
-            $table->string('telefone')->nullable();
+        Schema::create('estadias', function (Blueprint $table) {
+            $table->id();
+            $table->dateTime('data_acesso');
+            $table->boolean('status_pagamento');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('vagas', function (Blueprint $table) {
-            $table->dropColumn('celular');
-            $table->dropColumn('telefone');
-        });
+        Schema::dropIfExists('estadias');
     }
 };

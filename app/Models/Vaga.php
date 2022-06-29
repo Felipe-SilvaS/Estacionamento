@@ -22,4 +22,9 @@ class Vaga extends Model
     // {
     //     return $this->attributes['acesso'] = Carbon::now();
     // }
+
+    public function tipoVeiculo()
+    {
+        return $this->belongsTo(TipoVeiculo::class);
+    }
 }
