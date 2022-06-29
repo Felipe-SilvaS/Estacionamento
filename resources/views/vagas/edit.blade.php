@@ -40,7 +40,7 @@
 
         <div>
             <label for="">Acesso: </label>
-            <p>{{$vaga->acesso}}</p>
+            <p>{{date( 'd/m/Y' , strtotime($vaga->acesso))}} às {{date( 'H:i:s' , strtotime($vaga->acesso))}}</p>
         </div>
 
 
