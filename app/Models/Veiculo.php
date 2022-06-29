@@ -9,6 +9,8 @@ class Veiculo extends Model
 {
     use HasFactory;
 
+    protected $fillable =  ['nome_proprietario', 'cpf', 'celular', 'telefone', 'placa', 'tipo_veiculo_id'];
+
     public function estadia()
     {
         return $this->hasOne(Estadia::class);

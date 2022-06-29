@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrecoController;
-use App\Http\Controllers\VagaController;
+use App\Http\Controllers\{VagaController, EstadiaController};
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,8 @@ use App\Http\Controllers\VagaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [VagaController::class, 'index']);
+Route::get('/', [EstadiaController::class, 'index']);
 
 Route::resource('precos', PrecoController::class);
+Route::resource('estadia', EstadiaController::class);
 Route::resource('vagas', VagaController::class);

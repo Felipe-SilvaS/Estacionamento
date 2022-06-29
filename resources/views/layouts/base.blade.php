@@ -40,19 +40,10 @@
                             Preço
                         </a>
 
-                        <a href="{{ route('vagas.create') }}" class="nav-link">
+                        <a href="{{ route('estadia.create') }}" class="nav-link">
                             <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                             Entrada
                         </a>
-
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href={{ route('precos.index') }}>Preço</a>
-
-                                <a class="nav-link" href="{{ route('vagas.create') }}">Entrada</a>
-                            </nav>
-                        </div>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer px-2">

@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('veiculos', function (Blueprint $table) {
             $table->id();
             $table->string('nome_proprietario');
+            $table->string('cpf');
             $table->string('celular');
-            $table->string('tefone')->nullable();
-            $table->string('placa');
+            $table->string('telefone')->nullable();
+            $table->string('placa')->unique();
             $table->timestamps();
         });
     }

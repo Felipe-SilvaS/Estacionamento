@@ -9,6 +9,7 @@ class Estadia extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['data_acesso', 'status_pagamento', 'veiculo_id', 'preco_id'];
 
     public function veiculo()
     {

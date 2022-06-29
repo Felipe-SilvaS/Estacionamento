@@ -38,11 +38,7 @@ class VagaController extends Controller
      */
     public function store(StoreUpdateVaga $request)
     {
-        $data = $request->validated();
-        Vaga::create($data);
-        return redirect()
-            ->route('vagas.index')
-            ->with('message', 'Veículo adicionado ao sistema');
+        
     }
 
     /**
