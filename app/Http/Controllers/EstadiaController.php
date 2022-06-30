@@ -15,8 +15,8 @@ class EstadiaController extends Controller
      */
     public function index()
     {
-        $vaga = Estadia::orderBy('created_at')->paginate(5);
-        return view('estadia.index', compact('vaga'));
+        $estadia = Estadia::all();
+        return view('estadia.index', compact('estadia'));
     }
 
     /**
@@ -49,7 +49,7 @@ class EstadiaController extends Controller
             'preco_id' => $preco->id
         ]);
         return redirect()
-            ->route('vagas.index')
+            ->route('estadia.index')
             ->with('message', 'Veículo adicionado ao sistema');
     }
 
@@ -61,7 +61,13 @@ class EstadiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $estadia = Estadia::find($id);
+        if(!$estadia){
+            return redirect()
+                        ->route('estadia.index')
+                        ->with('message', 'Detalhes de estadia encontrado');
+        }
+        return view('estadia.show', compact('estadia'));
     }
 
     /**
@@ -72,7 +78,13 @@ class EstadiaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estadia = Estadia::find($id);
+        if(!$estadia){
+            return redirect()
+                        ->route('estadia.index')
+                        ->with('message', 'Estadia não Encontrada, Tente Novamente');
+        }
+        return view('estadia.edit', compact('estadia'));
     }
 
     /**
@@ -84,7 +96,16 @@ class EstadiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estadia = Estadia::find($id);
+        if(!$estadia){
+            return redirect()
+                        ->route('estadia.index')
+                        ->with('message', 'Estadia não Encontrada, Tente Novamente');
+        }
+        $estadia->update($request->all());
+        return redirect()
+                        ->route('estadia.index')
+                        ->with('message', 'Pagamento Efetuado, Volte Sempre!');
     }
 
     /**
@@ -95,6 +116,21 @@ class EstadiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estadia = Estadia::find($id);
+        if (!$estadia) {
+            return redirect()
+                ->route('estadia.index')
+                ->with('message', 'Estadia de estadia encontrado');
+        }
+        if ($estadia->status_pagamento) {
+            $estadia->delete();
+            return redirect()
+                ->route('estadia.index')
+                ->with('message', 'Liberado, Obrigado!');
+        } else {
+            return redirect()
+                ->route('estadia.edit', $id)
+                ->with('message', 'Pagamento não Efetuado, Por favor efetue para que possamos liberar seu veiculo!');
+        }
     }
 }

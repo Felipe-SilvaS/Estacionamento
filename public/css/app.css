@@ -113,6 +113,16 @@ h1, .h1 {
   }
 }
 
+#h1Titulo{
+    margin-left: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#tabelaVeiculos{
+    display: flexbox;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 h2, .h2 {
   font-size: calc(1.305rem + 0.66vw);
 }

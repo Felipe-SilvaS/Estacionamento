@@ -17,12 +17,12 @@
         </div>
     @endif
 
-    <form action="{{ route('vagas.update', $vaga->id) }}" method="POST">
+    <form action="{{ route('estadia.update', $estadia->id) }}" method="POST">
         @method('put')
         @csrf
         <div>
             <label for="">Nome: </label>
-            <p>{{$vaga->nome_visitante}}</p>
+            <p>{{$estadia->veiculo->nome_proprietario}}</p>
             <div>
                 <strong></strong>
             </div>
@@ -30,17 +30,17 @@
 
         <div>
             <label for="">CPF: </label>
-            <p>{{$vaga->cpf}}</p>
+            <p>{{$estadia->veiculo->cpf}}</p>
         </div>
 
         <div>
             <label for="">Placa: </label>
-            <p>{{$vaga->placa}}</p>
+            <p>{{$estadia->veiculo->placa}}</p>
         </div>
 
         <div>
             <label for="">Acesso: </label>
-            <p>{{date( 'd/m/Y' , strtotime($vaga->acesso))}} às {{date( 'H:i:s' , strtotime($vaga->acesso))}}</p>
+            <p>{{date( 'd/m/Y' , strtotime($estadia->veiculo->data_acesso))}} às {{date( 'H:i:s' , strtotime($estadia->data_acesso))}}</p>
         </div>
 
 

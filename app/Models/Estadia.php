@@ -13,7 +13,7 @@ class Estadia extends Model
 
     public function veiculo()
     {
-        return $this->belongsTo(veiculo::class);
+        return $this->belongsTo(Veiculo::class);
     }
 
     public function preco()

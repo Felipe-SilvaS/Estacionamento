@@ -5,7 +5,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="my-4">Tabela de preços @yield('content-header')</h1>
+            <h1 id="h1Titulo" class="my-4">Tabela de preços @yield('content-header')</h1>
             <div>
                 @yield('content')
                 @if($errors->any())
@@ -14,18 +14,21 @@
                 @endforeach
                 @endif
                 <div>
-                    <table width="80%" cellspacing="5" cellpadding="2" border="2">
+                    <table id="tabelaVeiculos" width=50% cellspacing="2" cellpadding="5" border="2">
                         <tr>
-                            <th>Permanência</th> <th>Carro</th> <th>Moto</th> <th>Motorhome</th>
+                            <th>Veículos até 1 hora</th> <td>R$10,00</td>
                         </tr>
                         <tr>
-                            <td>R$100,00</td> <td>R$100,00</td> <td>R$100,00</td> <td rowspan="4"></td>
+                            <th>Adicional horas</th> <td>R$5,00</td>
                         </tr>
                         <tr>
-
+                            <th>Mensalista</th> <td>R$160,00</td>
                         </tr>
                         <tr>
-                            <td colspan="3"></td>
+                            <th>Moto</th> <td>R$10,00</td>
+                        </tr>
+                        <tr>
+                            <th>Motorhome</th><td>R$10,00</td>
                         </tr>
                     </table>
                 </div>

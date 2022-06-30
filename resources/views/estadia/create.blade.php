@@ -82,7 +82,7 @@
                         <div class="form-check form-check-inline">
                             <input type="radio" id="pago"
                                 class="form-check-input {{ $errors->has('status_pagamento') ? 'is-invalid' : '' }}"
-                                name="estadia[status_pagamento]" value="1"
+                                name="status_pagamento" value="1"
                                 {{ old('status_pagamento') === '1' ? 'checked' : ' ' }}
                                 aria-describedby="pagamentoValidationFeedback">
                             <label for="pago" class="form-check-label">Pago</label>

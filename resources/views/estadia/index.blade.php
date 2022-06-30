@@ -14,13 +14,13 @@
                 @endforeach
                 @endif
                 <div>
-                    @foreach ($vaga as $vaga)
-                    <p>Nome: {{$vaga->nome_visitante}}</p>
-                    <p>Acesso: {{date( 'd/m/Y' , strtotime($vaga->acesso))}} às {{date( 'H:i:s' , strtotime($vaga->acesso))}}</p>
-                    <p>Status do pagamento: {{$vaga->status_pagamento}}</p>
+                    @foreach ($estadia as $estadia)
+                    <p>Nome: {{$estadia->veiculo->nome_proprietario}}</p>
+                    <p>Acesso: {{date( 'd/m/Y' , strtotime($estadia->data_acesso))}} às {{date( 'H:i:s' , strtotime($estadia->data_acesso   ))}}</p>
+                    <p>Status do pagamento: {{$estadia->status_pagamento}}</p>
                     <div>
-                        <a href="{{ route('vagas.show', $vaga->id) }}" class="btn btn-dark btn-lg mr-1">Ver detalhes</a>
-                        <form action ="{{ route('vagas.destroy', $vaga->id) }}" method="post">
+                        <a href="{{ route('estadia.show', $estadia->id) }}" class="btn btn-dark btn-lg mr-1">Ver detalhes</a>
+                        <form action ="{{ route('estadia.destroy', $estadia->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value= "DELETE">
                             <button type="submit" class="btn btn-dark btn-lg mr-1">Liberar a saída</button>
